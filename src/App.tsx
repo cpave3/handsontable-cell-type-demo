@@ -6,6 +6,19 @@ import 'handsontable/dist/handsontable.full.min.css';
 // register Handsontable's modules
 registerAllModules();
 
+const autocompleteWords = [
+  'groupware',
+  'Diverse',
+  'Graphical User Interface',
+  'context-sensitive',
+  'Reduced',
+  'object-oriented',
+  'algorithm',
+  'coherent',
+  'project',
+  'Customer-focused',
+];
+
 function App() {
   const hotRef = React.useRef(null);
 
@@ -17,32 +30,64 @@ function App() {
   });
 
   const data = [
-    [1, 'Caddric Lowrie', 47, '1956-07-04', '14:27', false, 'Adaptive'],
-    [2, 'Margit Brindley', 74, '1967-05-28', '13:53', true, 'Universal'],
+    ['Susi Judson', 67, '1950-04-26', '17:05', true, 'groupware', '#a15c91'],
+    ['Anetta Torrance', 8, '1950-12-22', '17:08', true, 'Diverse', '#f13981'],
     [
-      3,
-      'Timotheus McFarland',
+      'Jean Bolderson',
+      89,
+      '1951-07-27',
+      '20:48',
+      true,
+      'Graphical User Interface',
+      '#9383d4',
+    ],
+    [
+      'Phyllys McCray',
+      48,
+      '1988-01-06',
+      '17:55',
+      true,
+      'context-sensitive',
+      '#c3eab8',
+    ],
+    [
+      'Charmaine Tapenden',
+      91,
+      '1993-08-23',
+      '19:46',
+      false,
+      'Reduced',
+      '#73696e',
+    ],
+    [
+      'Dex Fleckness',
       43,
-      '1959-05-12',
-      '13:17',
+      '1979-03-16',
+      '10:08',
       false,
-      'bi-directional',
+      'object-oriented',
+      '#d6ced3',
     ],
     [
-      4,
-      'Jania Rubinsztein',
-      70,
-      '1997-07-05',
-      '16:40',
+      'Alexei Ballach',
+      75,
+      '1961-10-27',
+      '14:05',
       false,
-      'pricing structure',
+      'algorithm',
+      '#683958',
     ],
-    [5, 'Winonah Cavy', 23, '1977-08-02', '17:11', true, 'human-resource'],
-    [6, 'Aimee Bamford', 52, '1981-12-23', '17:58', false, 'benchmark'],
-    [7, 'Jammal Drissell', 25, '1955-06-28', '12:10', true, 'Right-sized'],
-    [8, 'Ced Hovie', 88, '2003-06-10', '18:24', false, '24/7'],
-    [9, 'Nelle Clinkard', 52, '1987-06-01', '14:23', false, 'software'],
-    [10, 'Gilburt Saberton', 35, '1968-06-05', '12:50', false, 'parallelism'],
+    ['Timmi Gabbidon', 86, '2000-04-29', '17:57', true, 'coherent', '#c6ea4a'],
+    ['Latrena Juris', 11, '1991-01-15', '11:46', true, 'project', '#154204'],
+    [
+      'Angela Bimrose',
+      5,
+      '1999-04-27',
+      '21:09',
+      false,
+      'Customer-focused',
+      '#819adc',
+    ],
   ];
 
   return (
@@ -51,22 +96,22 @@ function App() {
       data={data}
       rowHeaders={true}
       colHeaders={[
-        'id',
         'Name',
         'Number',
         'Date',
         'Time',
         'Bool',
         'Favorite Word',
+        'Color',
       ]}
       columns={[
-        { readOnly: true },
         { type: 'text' },
         { type: 'numeric' },
         { type: 'date', correctFormat: true },
         { type: 'time', correctFormat: true },
         { type: 'checkbox' },
-        { type: 'autocomplete' },
+        { type: 'autocomplete', source: autocompleteWords },
+        {},
       ]}
       height="auto"
       licenseKey="non-commercial-and-evaluation" // for non-commercial use only
